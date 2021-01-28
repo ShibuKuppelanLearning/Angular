@@ -1,3 +1,10 @@
 {
-	"folders": []
+	"folders": [
+		{
+			"path": "my-first-app"
+		},
+		{
+			"path": "message-app"
+		}
+	]
 }

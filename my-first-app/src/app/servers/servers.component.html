@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10">
+            <button class="btn btn-primary" 
+                    value="Add Server"
+                    [disabled]="!allowNewServer"
+                    (click)="onCreateServer()">Add Server</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-10">
+            <input  type="text" 
+                    class="forms-control"
+                    (input)="onUpdateServer($event)"
+                    />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-10">
+            <input  type="text" 
+                    class="forms-control"
+                    [(ngModel)]="serverName"/>
+        </div>
+    </div>
+</div>
+<hr/>
+<p>{{serverName}}</p>
+<p>{{serverCreationStatus}}</p>
+<div app-server></div>
+<div app-server></div>

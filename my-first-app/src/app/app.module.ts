@@ -6,6 +6,7 @@ import {HttpModule} from '@angular/http';
 import { AppComponent } from "./app.component";
 import { ServerComponent } from './server/server.component';
 import { ServersComponent } from './servers/servers.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ServersComponent } from './servers/servers.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

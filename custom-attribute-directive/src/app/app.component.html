@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="showOddOnly=!showOddOnly">Only show odd number</button>
+      <br><br>
+      <ul class="list-group" *ngIf="showOddOnly">
+        <li class="list-group-item" *ngFor="let odd of oddNumbers" [ngStyle]="{backgroundColor:'green'}"
+          [ngClass]="{oddNumbers:odd % 2 !== 0}">{{odd}}</li>
+      </ul>
+      <ul class="list-group" *ngIf="!showOddOnly">
+        <li class="list-group-item" *ngFor="let even of evenNumbers" [ngStyle]="{backgroundColor:'blue'}"
+          [ngClass]="{evepnNumbers:even % 2===0}">{{even}}</li>
+      </ul>
+      <hr>
+      <p basicHighlight>Custom attribute directive example</p>
+      <p [appBetterHighlight]="'lime'" [defaultColor]="'red'">Custom attribute directive example</p>
+    </div>
+  </div>
+</div>

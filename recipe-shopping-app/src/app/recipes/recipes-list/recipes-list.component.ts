@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -6,9 +6,18 @@ import { Recipe } from '../recipe.model';
     templateUrl: "./recipes-list.component.html"
 })
 export class RecipesListComponent {
-    recipes: Recipe[] = [new Recipe('Test Recipe', 'This is simple a test Recipe', 'https://assets.bonappetit.com/photos/5d7296eec4af4d0008ad1263/16:9/w_1200,c_limit/Basically-Gojuchang-Chicken-Recipe-Wide.jpg'), new Recipe('Test Recipe', 'This is simple a test Recipe', 'https://assets.bonappetit.com/photos/5d7296eec4af4d0008ad1263/16:9/w_1200,c_limit/Basically-Gojuchang-Chicken-Recipe-Wide.jpg')];
+    @Output() recipeSelected = new EventEmitter<Recipe>();
+
+    recipes: Recipe[] = [
+        new Recipe('A Test Recipe 1', 'This is simply a test recipe 1', 'https://hips.hearstapps.com/del.h-cdn.co/assets/17/32/2048x1024/landscape-1502305153-chicken-salad-sandwich-delish-1.jpg'),
+        new Recipe('A Test Recipe 2', 'This is simply a test recipe 2', 'https://hips.hearstapps.com/del.h-cdn.co/assets/17/32/2048x1024/landscape-1502305153-chicken-salad-sandwich-delish-1.jpg')
+    ];
 
     constructor() {
 
+    }
+
+    onRecipeSelected(selectedRecipe: Recipe) {
+        this.recipeSelected.emit(selectedRecipe);
     }
 }

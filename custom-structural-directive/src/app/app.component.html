@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- <ng-template [ngIf]="operationStatus==='success'">
+        {{successMsg}}
+      </ng-template>
+      <ng-template [ngIf]="operationStatus!=='success'">
+        {{failureMsg}}
+      </ng-template> -->
+      <div *appUnless="operationStatus!=='success'">
+        {{failureMsg}}
+      </div>
+      <div *appUnless="operationStatus!=='failure'">
+        {{successMsg}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <button class="btn btn-primary" (click)="processRequest()">Process</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div [ngSwitch]="currentMonth">
+        <p *ngSwitchCase="1">January</p>
+        <p *ngSwitchCase="2">February</p>
+        <p *ngSwitchCase="3">March</p>
+        <p *ngSwitchCase="4">April</p>
+        <p *ngSwitchCase="5">May</p>
+        <p *ngSwitchCase="6">June</p>
+        <p *ngSwitchCase="7">July</p>
+        <p *ngSwitchCase="8">August</p>
+        <p *ngSwitchCase="9">September</p>
+        <p *ngSwitchCase="10">October</p>
+        <p *ngSwitchCase="11">November</p>
+        <p *ngSwitchDefault>December</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-primary" (click)="nextMonth()">Next Month</button>
+  </div>
+</div>

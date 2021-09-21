@@ -1,28 +1,29 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { LoggingService, } from '../services/logging.service';
+import {AccountServices} from '../services/accounts.service';
+
 
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+  styleUrls: ['./account.component.css'],
+  // providers: [LoggingService]
 })
 export class AccountComponent implements OnInit {
 
   @Input() account: { name: string, status: string };
-
   @Input() id: number;
 
-  @Output() statusChanged: EventEmitter<{ id: number, newStatus: string }> = new EventEmitter<{ id: number, newStatus: string }>();
-
-  constructor() { }
+  constructor(private loggingService: LoggingService,private accountsService:AccountServices) { }
 
   ngOnInit(): void {
 
   }
 
   onSetTo(newStatus: string) {
-    const id: number = this.id;
     this.account.status = newStatus;
-    this.statusChanged.emit({ id, newStatus });
-    console.log('A server '+(this.account.name)+' status changed, new status : ' + newStatus);
+    this.accountsService.updateAccountStatus(this.id, newStatus);
+    this.accountsService.updateStatus.emit(newStatus);
+    // this.loggingService.logAccountStatusUpdate(this.account.name,this.account.status);
   }
 }

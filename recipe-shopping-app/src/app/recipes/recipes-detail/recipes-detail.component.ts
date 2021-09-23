@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { ShoppingListService } from 'src/app/shopping-list/services/shopping-list.service';
 
 @Component({
   selector: 'app-recipes-detail',
@@ -9,12 +10,20 @@ import { Recipe } from '../recipe.model';
 export class RecipesDetailComponent implements OnInit {
 
   @Input() recipe: Recipe;
+  @ViewChild('dropdownmenu') dropDownMenue: ElementRef;
 
-  constructor() {
-    this.recipe = new Recipe("", "", "");
+  constructor(private shoppingListService: ShoppingListService) {
+    this.recipe = new Recipe("", "", "", []);
   }
 
   ngOnInit() {
+
   }
 
+  onToShoppingList() {
+    this.shoppingListService.ingredientAdded.emit(this.recipe.ingredients);
+    console.log('this.dropDownMenue.nativeElement.classList : '+this.dropDownMenue.nativeElement.classList);
+    this.dropDownMenue.nativeElement.classList.remove('show');  
+
+  }
 }

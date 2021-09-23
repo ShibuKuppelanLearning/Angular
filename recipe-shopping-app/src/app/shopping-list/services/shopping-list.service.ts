@@ -8,7 +8,7 @@ export class ShoppingListService {
 
   private ingredients: Ingredient[];
 
-  ingredientAdded: EventEmitter<Ingredient> = new EventEmitter<Ingredient>();
+  ingredientAdded: EventEmitter<Ingredient[]> = new EventEmitter<Ingredient[]>();
 
   constructor() {
     this.ingredients = [
@@ -19,5 +19,15 @@ export class ShoppingListService {
 
   getIngredients() {
     return this.ingredients.slice();
+  }
+
+  addIngredient(ingredient: Ingredient) {
+    this.ingredients.push(ingredient);
+  }
+
+  addIngredients(ingredients: Ingredient[]) {
+    ingredients.forEach(ingredient => {
+      this.ingredients.push(ingredient);
+    });
   }
 }

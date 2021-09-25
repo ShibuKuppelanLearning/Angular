@@ -3,9 +3,30 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "recipe-shopping-app": {
+    "routing-app": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:component": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
         "@schematics/angular:application": {
           "strict": true
         }
@@ -17,7 +38,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/recipe-shopping-app",
+            "outputPath": "dist/routing-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,13 +48,11 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",              
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/app/recipe-shopping.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {
@@ -73,10 +92,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "recipe-shopping-app:build:production"
+              "browserTarget": "routing-app:build:production"
             },
             "development": {
-              "browserTarget": "recipe-shopping-app:build:development"
+              "browserTarget": "routing-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +103,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "recipe-shopping-app:build"
+            "browserTarget": "routing-app:build"
           }
         },
         "test": {
@@ -107,5 +126,5 @@
       }
     }
   },
-  "defaultProject": "recipe-shopping-app"
+  "defaultProject": "routing-app"
 }

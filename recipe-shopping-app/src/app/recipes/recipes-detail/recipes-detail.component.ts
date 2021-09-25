@@ -10,7 +10,7 @@ import { ShoppingListService } from 'src/app/shopping-list/services/shopping-lis
 export class RecipesDetailComponent implements OnInit {
 
   @Input() recipe: Recipe;
-  @ViewChild('dropdownmenu') dropDownMenue: ElementRef;
+  // @ViewChild('dropdownmenu') dropDownMenue: ElementRef;
 
   constructor(private shoppingListService: ShoppingListService) {
     this.recipe = new Recipe("", "", "", []);
@@ -22,8 +22,8 @@ export class RecipesDetailComponent implements OnInit {
 
   onToShoppingList() {
     this.shoppingListService.ingredientAdded.emit(this.recipe.ingredients);
-    console.log('this.dropDownMenue.nativeElement.classList : '+this.dropDownMenue.nativeElement.classList);
-    this.dropDownMenue.nativeElement.classList.remove('show');  
+    // console.log('this.dropDownMenue.nativeElement.classList : '+this.dropDownMenue.nativeElement.classList);
+    // this.dropDownMenue.nativeElement.classList.remove('show');  
 
   }
 }

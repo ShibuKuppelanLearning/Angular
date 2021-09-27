@@ -1,1 +1,13 @@
-<p>users works!</p>
+<div class="row">
+    <div class="col-xs-12 col-sm-4">
+        <div class="list-group">
+            <!-- <a href="#" class="list-group-item" *ngFor="let user of users" [routerLink]="['/users',user.id,user.name]"> -->
+            <a class="list-group-item" *ngFor="let user of users" (click)="onSelectUser(user.id,user.name)">
+          {{ user.name }}
+        </a>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <app-user></app-user>
+    </div>
+</div>

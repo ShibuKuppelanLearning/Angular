@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ServersService } from '../service/servers.service';
 import { Server } from '../model/server.model';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 
 @Component({
@@ -12,12 +13,23 @@ import { Server } from '../model/server.model';
 export class ServerComponent implements OnInit {
   server: Server;
 
-  constructor(private serversService: ServersService) { }
+  constructor(private serversService: ServersService, private activeRoute: ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
-    const targetServer = this.serversService.getServer(1);
+    this.setServerFromParams(this.activeRoute.snapshot.params);
+    this.activeRoute.params.subscribe((params: Params) => {
+      this.setServerFromParams(params);
+    });
+  }
+
+  private setServerFromParams(params: Params) {
+    const targetServer = this.serversService.getServer(+params['id']);
     if (targetServer) {
       this.server = targetServer;
     }
+  }
+
+  onEditServer(){
+    this.router.navigate(['edit'],{relativeTo:this.activeRoute,queryParamsHandling:"preserve"});
   }
 }

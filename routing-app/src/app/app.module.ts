@@ -11,6 +11,8 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { UserComponent } from './users/user/user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing-module';
+import { AuthGaurd } from './auth-gaurd.service';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [

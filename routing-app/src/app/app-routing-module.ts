@@ -9,6 +9,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGaurd } from './auth-gaurd.service';
 import { CanDeactivateGaurd } from './servers/edit-server/can-deactivate-gaurd.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { ErrorResovlerService } from './error-resovler.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -23,18 +25,19 @@ const appRoutes: Routes = [
         canActivateChild: [AuthGaurd],
         component: ServersComponent,
         children: [
-            { path: ':id', component: ServerComponent },
+            { path: ':id', component: ServerComponent, resolve: { server: ErrorResovlerService } },
             { path: ':id/edit', canDeactivate: [CanDeactivateGaurd], component: EditServerComponent }
         ]
     },
-    { path: 'not-found', component: PageNotFoundComponent },
+    // { path: 'not-found', component: PageNotFoundComponent },
+    { path: 'not-found', component: ErrorPageComponent, data: { message: 'Unable to process your request' } },
     { path: '**', redirectTo: 'not-found' }
 
 ]
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes,{useHash:true})
     ],
     exports: [
         RouterModule

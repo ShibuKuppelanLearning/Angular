@@ -11,9 +11,7 @@ export class RecipesComponent {
     selectedRecipe: Recipe;
 
     constructor(private recipeService: RecipeService) {
-        this.recipeService.recipeItemSelected.subscribe((recipe: Recipe) => {
-            this.selectedRecipe = recipe;
-        });
+        
     }
 
 }

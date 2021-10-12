@@ -37,7 +37,7 @@ export class RecipesDetailComponent implements OnInit {
   }
 
   onToShoppingList() {
-    this.shoppingListService.ingredientAdded.emit(this.recipe.ingredients);
+    this.shoppingListService.ingredientAdded.next(this.recipe.ingredients);
     // console.log('this.dropDownMenue.nativeElement.classList : '+this.dropDownMenue.nativeElement.classList);
     // this.dropDownMenue.nativeElement.classList.remove('show');  
 

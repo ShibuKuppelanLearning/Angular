@@ -25,10 +25,12 @@ export class RecipeService {
     return this.recipes.slice();
   }
 
-  getRecipeById(id: number) {
-    const targetRecipe: Recipe | undefined = this.recipes.find((recipe, index) => {
-      return recipe.id == id;
-    });
-    return targetRecipe;
+  getRecipeById(id: number): Recipe | null {
+    let targetRecipe = null;
+    targetRecipe = this.recipes.find((recipe, index) => { return recipe.id == id; });
+    if (targetRecipe != undefined) {
+      return targetRecipe;
+    }
+    return null;
   }
 }

@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <input type="text">
+            <ul class="list-group">
+                <li *ngFor="let server of servers" class="list-group-item" [ngClass]="getStatusClasses(server)">
+                    <strong>{{server.name | shorten:10}}</strong> | {{server.instanceType | uppercase}} | {{server.creationDate | date:'fullDate'|uppercase}}
+                    <span class="badge bg-secondary">{{server.status}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

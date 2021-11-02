@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="form-group">
+                        <label for="projectName">Project Name : </label>
+                        <input type="text " class="form-control " formControlName="projectName"> {{projectForm.get('projectName')?.valid}}
+                        <div id="invalidProjectName" *ngIf="!(projectForm.get('projectName')?.valid)" class="invalid-feedback">Select valid project name</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailId">Email :</label>
+                        <input type="text " class="form-control " formControlName="emailId">
+                    </div>
+                    <div class="form-group">
+                        <label for="Status">Status :</label>
+                        <select name="projectStatus" id="projectStatus" formControlName="status" class="form-select">
+                          <option value="">---Select---</option>
+                          <option *ngFor="let projStatus of projectStatus" [value]="projStatus">{{projStatus}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="btn-group btn-group-justified ">
+                    <button class="btn btn-primary ">Add Project</button>
+                    <button class="btn btn-danger ms-2 ">Clear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

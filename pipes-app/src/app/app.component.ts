@@ -13,6 +13,8 @@ export class AppComponent {
     { name: 'Testing Environmnet Server', instanceType: 'small', creationDate: new Date(2015, 9, 10), status: 'stable' }
   ];
 
+  filterByStatus: string='';
+
   getStatusClasses(server: { name: string, instanceType: string, creationDate: Date, status: string }) {
     return { 'list-group-item-success': server.status === 'stable', 'list-group-item-warning': server.status === 'offline', 'list-group-item-danger': server.status === 'critical' }
   }
